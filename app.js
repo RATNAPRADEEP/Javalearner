@@ -1,3 +1,4 @@
+const APP_VERSION="4";
 const framework=["GIVEN","ASKED","CONSTRAINTS","CLUES","PATTERN","DATA STRUCTURE","TEMPLATE","TEST"];
 const questions=[
 {title:"Two Sum",text:'Given an array of integers nums and an integer target, return the indices of the two numbers such that they add up to target.',examples:["Input: nums=[2,7,11,15], target=9","Output: [0,1]"],evidence:[["array of integers nums",0],["integer target",0],["return the indices",1],["two numbers",3],["add up to target",3]],answers:{given:"nums and target",asked:"the indices of the two numbers",constraints:"n can be large, so avoid O(n²)",clues:"two numbers, add up, target",pattern:"HashMap / HashSet",ds:"HashMap",template:"HashMap complement lookup",test:"normal pair, duplicate values, and no-solution case"},sources:["The variables nums and target are given directly.","The phrase “return the indices” tells you what is asked.","No explicit size is given; the training assumption is to avoid O(n²) for large n.","“two numbers”, “add up”, and “target” are the clue words.","Pattern is recognized from the clues, not stated in the question.","HashMap is chosen because fast lookup is needed.","The reusable Java approach is complement lookup.","Test cases are derived; they are not stated in the question."],complexity:"O(n)",why:"A HashMap provides fast lookup of the complement while scanning the array."},
@@ -26,7 +27,7 @@ function renderSteps(){
    const key=name.toLowerCase();
    const ans=key==="data structure"?q.answers.ds:key==="template"?q.answers.template:key==="test"?q.answers.test:q.answers[key];
    const source=q.sources&&q.sources[i]?q.sources[i]:"Derived from the question.";
-   return '<div class="step '+(i===step?"active selected":"")+'" data-step="'+i+'"><b>'+(i+1)+". "+name+'</b><div class="model-answer"><span>Answer:</span> '+ans+'</div><span class="source-note">'+source+'</span></div>';
+   return '<div class="step '+(i===step?"active selected":"")+'" data-step="'+i+'"><b>'+(i+1)+". "+name+'</b><div class="model-answer"><span>ANSWER:</span> '+ans+'</div><span class="source-note">'+source+'</span></div>';
  }).join("");
  document.querySelectorAll(".step").forEach(el=>el.onclick=()=>selectStep(+el.dataset.step));
  highlightSource(step);
